@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CHANNEL TIMES</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
+	<link rel="stylesheet" href="css/jquery.validity.css" />
+	<link href="css/jquery.mobile.iscrollview.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery.mobile.iscrollview-pull.css" rel="stylesheet" type="text/css" />
+
+	<link rel="stylesheet" href="css/custom.css" />
+
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="scripts/jquery.mobile-1.3.1.js"></script>
+
+	<script type="text/javascript" src="scripts/validity.js"></script>
+	<script src="scripts/iscroll.js" type="text/javascript"></script>
+    <script src="scripts/jquery.mobile.iscrollview.js" type="text/javascript"></script>
+   	<!--script src="scripts/swipeleftright.js"></script-->
+	<script type="application/javascript" src="scripts/fastclick.js"></script>
+	<script type="text/javascript" src="scripts/jquery.jfeed.pack.js"></script>
+    <!--script type="text/javascript" charset="utf-8" src="cordova.js"></script-->
+    <script type="text/javascript" src="scripts/custom.js"></script>
+    <script type="text/javascript">
+	    //Prevent back button in android 
+	 	  
+	    function onLoad() {
+	        document.addEventListener("deviceready", onDeviceReady, false);
+	    }
+
+	    function onDeviceReady() {
+	        document.addEventListener("backbutton", onBackKeyDown, false);
+	    }
+
+	    function onBackKeyDown() {
+    	    if($.mobile.activePage.is('#schemelist')){
+		        navigator.app.exitApp();
+		    }
+		    else {
+		        alert("Please use App buttons to naavigate");
+		    }
+	    }
+
+    </script>
+    
+  </head>
+  <body onload="onLoad()">
+  <span id="fastclick">	
+  	<!-- Start of Splash SCreen -->
+	<div data-role="page" id="splash" class="splash-screen">
+	
+	
+		<div data-role="content">	
+			<div class="splash-content">
+				<h1 class="logo"></h1>
+				<div class="divider"></div>
+				<h2>Welcome!</h2>
+	
+				<h5>A registered account is required to use Channel Times. <br />
+					Trust us, getting one is a 2 minutes job. </h5>
+	             
+				<p class="parag">Please start it by clicking the link below</p>
+				<div class="register-btn-block">
+					<p class="caps">New Users <a href="#register" data-transition="slide">Register Here</a></p>
+	
+				</div>
+				<div class="alredy-registered-block">
+					<h5 class="">Already registered?</h5>
+					<a href="#login" data-transition="slideup" class="caps">Login Here</a>
+				</div>
+				<div class="divider"></div>
+				<p class="poweredby">Powered by Trivone</p>
+			</div>
+	
+		</div><!-- /content -->
+		
+	</div><!-- /page -->
+	
+	
+	<!-- Start of Register page I -->
+	<div data-role="page" id="register">
+	
+		<div data-role="header">
+			<a href="#splash" data-rel="back" class="back-btn">
+				<span class="img-span"></span>
+			</a>
+			<h1>Registration</h1>
+		</div><!-- /header -->
+	
+		<div data-role="content">
+			<div class="register-divider"></div>	
+			<div class="register-content">
+				<h2>New Users Register Here. <span>All fields are mandatory</span></h2>
+				<h3>ENTER YOUR BUSINESS DETAILS</h3>
+				<form id="register-form"  method="get">
+					<input type="text" class="name" placeholder="YOUR FULL NAME" />
+					<input type="email" class="organization" placeholder="BUSINESS NAME" />
+					<input type="text" class="city" placeholder="LOCATION" />
+					<input type="number" class="tin" placeholder="TIN NUMBER" maxlength="9"/>
+					<input type="number" class="mobile" placeholder="MOBILE NUMBER(used for confirmation call)" />
+	
+	
+					<div class="submit-btn">
+						<!--input type="submit" id="register-stepone" value="Next" class="red-btn"/--> 
+						<a href="JavaScript:void(0);" id="register-stepone" data-transition="slide" class="red-btn">Next</a>
+					</div>
+	
+				</form>
+			</div>
+		</div><!-- /content -->
+		<div data-role="footer">
+			<div class="register-divider"></div>
+		</div>
+	
+	</div><!-- /page -->
+	
+	
+	<!-- Start of Register page I -->
+	<div data-role="page" id="register-login">
+	
+		<div data-role="header">
+			<a href="#register" data-rel="back" class="back-btn">
+				<span class="img-span"></span>
+			</a>
+			<h1>Registration</h1>
+		</div><!-- /header -->
+	
+		<div data-role="content">
+			<div class="register-divider"></div>	
+			<div class="register-login-content">
+	
+	
+				<div class="login-form">
+					<h2>CREATE LOGIN</h2>
+					<form >
+						<input type="text" class="email" placeholder="EMAIL ADDRESS(this will be your login-id)" />
+						<input type="password" class="password" placeholder="SET PASSWORD" />
+	
+						<div class="accept-terms">
+							<div class="checkbox">
+							   <label for="Check1">I agree to <a href="#" class="terms-link">Terms & Conditions</a></label>
+							   <input type="checkbox" name="check1" id="Check1" value="1" checked="checked" />
+							</div>
+						</div>
+	
+						<div class="submit-btn mtop20">
+							<input type="submit" id="register-btn" value="Submit" class="red-btn"/>
+							<!--a href="JavaScript:void(0);" id="register-btn" data-transition="slide" class="red-btn">Submit</a-->
+						</div>
+					</form>
+				</div>
+	
+				
+			</div>
+			
+		</div><!-- /content -->
+		<div data-role="footer">
+			<div class="register-divider"></div>
+		</div>
+	
+	</div><!-- /page -->
+	
+	
+	<!-- Start of login Page -->
+	<div data-role="page" id="login">
+	
+		<div data-role="content">	
+			<div class="login-content">
+				<h1 class="logo"></h1>
+				<div class="divider"></div>
+	
+				<div class="login-form">
+					<h2>Registered Users Login Here</h2>
+					<form>
+						<input type="text" class="login-email" placeholder="NAME" />
+						<input type="password" class="login-password" placeholder="PASSWORD" />
+	
+						<div class="accept-terms">
+							<div class="checkbox">
+							   <label for="check-log">Keep me logged in</label>
+							   <input type="checkbox" name="check-log" id="check-log" value="1" />
+							</div>
+						</div>
+	
+						<div class="submit-btn mtop20">
+							<input type="submit" id="login-btn" value="Sign in" class="red-btn"/> 
+							<!--<a href="JavaScript:void(0);" id="login-btn" data-transition="slide" class="red-btn">Sign In</a-->
+						</div>
+					</form>
+				</div>
+				<div class="divider"></div>
+				<p class="forgot-pass"><a href="#forgotpass">Forgot Password?</a></p>
+	
+				<div class="alredy-registered-block">
+					<h5 class="">New User?</h5>
+					<a href="#register" data-transition="slideup" class="caps">Register Here</a>
+				</div>
+				
+			</div>
+		</div><!-- /content -->
+		
+	</div><!-- /page -->
+	
+	
+	
+	<!-- Start of Forgot password page -->
+	<div data-role="page" id="forgotpass">
+	
+		<div data-role="header">
+			<a href="#login" data-rel="back" class="back-btn">
+				<span class="img-span"></span>
+			</a>
+			<h1>Forgot Password</h1>
+		</div><!-- /header -->
+	
+		<div data-role="content">
+			<div class="forgotpass-content">
+				<h6>Submit your email address, we will send you a mail with instructions to recover it.</h6>
+				<form>
+					<input type="text" class="forgot-email" placeholder="EMAIL" />
+	
+					<div class="submit-btn">
+						<input type="submit" value="Submit" class="forgot-pass-btn red-btn"/>
+					</div>
+	
+				</form>
+			</div>
+		</div><!-- /content -->
+		
+	
+	</div><!-- /page -->
+	
+	
+	
+	<!-- SCHEMES -->
+	
+	
+	
+	
+	<!-- Start of Splash SCreen -->
+	<div data-role="page" id="schemelist" class="schemelist-screen scrollable">
+		<div data-role="header" data-position="fixed">
+			<a href="#leftpanel" class="left-panel-icon">
+				<span class="img-span"></span>
+			</a>
+			<h1>All Schemes</h1>
+			<a href="#rightpanel" class="right-panel-icon">
+				<span class="img-span"></span>
+			</a>
+		</div><!-- /header -->
+	
+	
+		<!-- Left panel -->
+		<div data-role="panel" id="leftpanel" data-position="left">
+		<div data-iscroll="">
+			<div class="profile">
+				<span class="user-name"></span>
+				<div class="profile-icon-container">
+					<a href="#" class="profile-icon"></a>
+				</div>
+			</div>
+	
+			<div class="profile-detail"> 
+				<ul>
+					<li class="has-list">
+						<ul class="profile-listing">
+							<li class="user-email"></li>
+							<li class="user-business"> </li>
+							<li class="user-location"></li>
+						 	<li class="user-mobile"></li> 
+							<!--li class="user-phone"></li-->
+						</ul>
+					</li>
+					<li class="notofication-li">
+						<input type="checkbox" name="pushnot-checkbox" id="push-not" value="on" checked="checked">
+	        			<label for="push-not">Push Notification</label>
+					</li>
+					<li>
+	        			<a href="#" class="logout">Logout <span class="logout-btn"></span></a>
+					</li>							
+				</ul>
+				<div class="profile-closer"></div>
+			</div>	
+	
+			<!--div class="scheme-types">
+				<h1 class="panel-heading">SCHEMES</h1>
+				<ul>
+					<li>
+						<input type="radio" name="scheme-radio" id="scheme-1a" value="on" checked="checked">
+	        			<label for="scheme-1a">All</label>
+					</li>
+					<li>
+						<input type="radio" name="scheme-radio" id="scheme-2a" value="on" checked="checked">
+	        			<label for="scheme-2a">Open</label>
+					</li>
+					<li>
+						<input type="radio" name="scheme-radio" id="scheme-3a" value="on" checked="checked">
+	        			<label for="scheme-3a">Accepted</label>
+					</li>	
+					<li>
+						<input type="radio" name="scheme-radio" id="scheme-4a" value="on" checked="checked">
+	        			<label for="scheme-4a">Declined</label>
+					</li>
+					<li>
+						<input type="radio" name="scheme-radio" id="scheme-5a" value="on" checked="checked">
+	        			<label for="scheme-5a">On Hold</label>
+					</li>								
+				</ul>
+			</div>
+	
+			<div class="articles-types">
+				<h1 class="panel-heading">NEWS & ARTICLES</h1>
+				<ul>
+					<li>
+						<input type="radio" name="article-radio" id="article-1a" value="on" checked="checked">
+	        			<label for="article-1a">Market Watch</label>
+					</li>
+					<li>
+						<input type="radio" name="article-radio" id="article-2a" value="on" checked="checked">
+	        			<label for="article-2a">Interviews</label>
+					</li>
+					<li>
+						<input type="radio" name="article-radio" id="article-3a" value="on" checked="checked">
+	        			<label for="article-3a">iTalk</label>
+					</li>	
+												
+				</ul>
+			</div-->
+	
+	
+		</div>
+	    </div><!-- Left panel -->
+	
+	
+	
+	
+	<!-- Right panel -->
+		<div data-role="panel" id="rightpanel"  data-position="right">
+		<div data-iscroll="">
+			
+			<div class="filter">
+				<h1 class="filter-title">Filter Scheme by </h1>
+			</div>		
+	
+			<!--div class="filter-types">
+				<h1 class="panel-heading">Ending</h1>
+				<ul>
+					<li>
+						<input type="checkbox" name="filter-checkbox" id="filter-1a" value="on" checked="checked">
+	        			<label for="filter-1a">None</label>
+					</li>
+					<li>
+						<input type="checkbox" name="filter-checkbox" id="filter-2a" value="on" checked="checked">
+	        			<label for="filter-2a">Today</label>
+					</li>
+					<li>
+						<input type="checkbox" name="filter-checkbox" id="filter-3a" value="on" checked="checked">
+	        			<label for="filter-3a">Tomorrow</label>
+					</li>	
+					<li>
+						<input type="checkbox" name="filter-checkbox" id="filter-4a" value="on" checked="checked">
+	        			<label for="filter-4a">Next 7 days</label>
+					</li>							
+				</ul>
+			</div>
+	
+			<div class="oem-types">
+				<h1 class="panel-heading">OEMs</h1>
+				<ul>
+					<li>
+						<input type="checkbox" name="oem-checkbox" id="oem-1a" value="on" checked="checked">
+	        			<label for="oem-1a">All</label>
+					</li>
+					<li>
+						<input type="checkbox" name="oem-checkbox" id="oem-2a" value="on" checked="checked">
+	        			<label for="oem-2a"><img src="css/images/oem-samsung.png" /></label>
+					</li>
+					<li>
+						<input type="checkbox" name="oem-checkbox" id="oem-3a" value="on" checked="checked">
+	        			<label for="oem-3a"><img src="css/images/oem-lava.png" /></label>
+					</li>	
+					<li>
+						<input type="checkbox" name="oem-checkbox" id="oem-4a" value="on" checked="checked">
+	        			<label for="oem-4a"><img src="css/images/oem-karbonn.png" /></label>
+					</li>	
+					<li>
+						<input type="checkbox" name="oem-checkbox" id="oem-5a" value="on" checked="checked">
+	        			<label for="oem-5a"><img src="css/images/oem-lg.png" /></label>
+					</li>	
+					<li>
+						<input type="checkbox" name="oem-checkbox" id="oem-6a" value="on" checked="checked">
+	        			<label for="oem-6a"><img src="css/images/oem-micromax.png" /></label>
+					</li>	
+					<li>
+						<input type="checkbox" name="oem-checkbox" id="oem-7a" value="on" checked="checked">
+	        			<label for="oem-7a"><img src="css/images/oem-nokia.png" /></label>
+					</li>	
+					<li>
+						<input type="checkbox" name="oem-checkbox" id="oem-8a" value="on" checked="checked">
+	        			<label for="oem-8a"><img src="css/images/oem-sony.png" /></label>
+					</li>																				
+				</ul>
+			</div-->		
+		</div>
+	    </div><!-- Right panel -->
+	
+	
+	
+	
+		<div data-role="content">	
+			<div class="schemelist-content">
+				<div class="search-bar">
+					<form id="search-scheme">
+						<span class="search-icon"></span>
+						<input type="text" placeholder="Search Schemes"/>
+						<input type="submit" class="hidden-submit" />
+					</form>
+				</div>
+				<div data-iscroll="" class="">
+					<div class="iscroll-pulldown">
+	          			<span class="iscroll-pull-icon"></span><span class="iscroll-pull-label"></span>
+	        		</div>
+					<ul data-role="listview" class="scheme-list" data-inset="true">
+					</ul>
+				</div>
+	
+			</div>
+			<div class="news-articles-content">
+					<ul data-role="listview" class="article-list" data-inset="true">
+					</ul>
+			</div>
+	
+		</div><!-- /content -->
+		
+	</div><!-- /page -->
+	
+	<!-- Start of scheme Details page -->
+	<div data-role="page" id="scheme-detail">
+	
+		<div data-role="header" data-position="fixed" data-tap-toggle="false">
+			<a href="#schemelist" data-rel="back" class="back-btn">
+				<span class="img-span"></span>
+			</a>
+			<h1>Scheme Details</h1>
+		</div><!-- /header -->
+	
+		<div data-role="content">
+			<div class="scheme-detail-content">
+				<!--h6 class="scheme-title">Mercury Power Scheme for Channel Partners</h6>
+				<div class="scheme-scrollable-content">
+					<div class="scheme-brief-detail">
+						<p>Brand: <span class="scheme-brand">Mercury</span></p>
+						<p>Products:<span class="scheme-product">MercuryElite650VAPROUPS</span> </p>
+						<p>Scheme Available: <span class="scheme-location">AcrossIndia</span></p>
+					</div>
+					<div class="divider"></div>
+					<div class="clear"></div>
+					<div class="scheme-details">
+						<p>Rewards on earning points with the sale of Mercury Elite650 VA PRO UPS; from May to July 2013<br /><br />
+	
+						May 24, 2013: Kobian, a leading player in computer peripherals and tablets, announced its special scheme - ‘Mercury Power’ for its partners. The scheme is exclusive on Mercury Elite650 PRO VA UPS and is designed for Pan India channel partners. The scheme is designed for partners to work on the Mercury UPS segment and earn attractive rewards.<br /><br />
+	
+						The scheme is custom designed with varying slabs as per each region to meet the varying regional channel dynamics. Product and volume focus differs in each region and city classes. The schemes are valid from 1st May to 30th July 2013 and valid for the purchases billed out from Kobian authorized distributors. Targets for the quarter are varied allowing smaller B and C city partners also to avail the scheme and maximize their business and earn attractive rewards.</p>
+					</div>
+	
+					<h5 class="scheme-validity">
+						Validity: <span class="scheme-validity-startdate">24/05</span> - <span class="scheme-validity-startdate">23/06</span>
+					</h5>
+					<div class="divider"></div>
+					<div class="more-scheme">
+						<a href="#" class="red-link">More Schemes from Mercury</a>
+					</div>
+					<div class="divider mbot45"></div>
+				</div-->
+			</div>
+		</div><!-- /content -->
+
+		<div data-role="footer" data-position="fixed" data-tap-toggle="false" >
+			<div class="scheme-action-btns">
+
+
+				<div class="accept-terms">
+					<div class="checkbox">
+					   <label for="check-log">Accept the </label>
+					   <input type="checkbox" name="check-log" id="check-log" value="1" />
+					</div>
+				</div>
+				<a href="JavaScript:void(0);"  data-transition="slide" class="accept-terms-link">Terms & Conditions</a>
+
+				<a href="JavaScript:void(0);" class="scheme-btn accepted">
+					<span class="accept"></span>Accept<span class="hidden-value">1</span>
+				</a>
+				<a href="JavaScript:void(0);" class="scheme-btn onhold">
+					<span class="hold"></span>Hold<span class="hidden-value">0</span>
+				</a>
+				<a href="JavaScript:void(0);" class="scheme-btn declined">
+					<span class="decline"></span>Decline<span class="hidden-value">2</span>
+				</a>
+			</div>
+		</div>
+		
+	</div><!-- /page -->
+
+
+
+
+
+
+
+
+<!-- Start of Terms and condotions page -->
+	<div data-role="page" id="terms-page">
+	
+		<div data-role="header">
+			<a href="#scheme-detail" data-rel="back" class="back-btn">
+				<span class="img-span"></span>
+			</a>
+			<h1>Terms & Condition</h1>
+		</div><!-- /header -->
+	
+		<div data-role="content">
+			<div class="terms-content">
+
+					
+			</div>
+
+		</div><!-- /content -->
+		
+	
+	</div><!-- /page -->
+
+
+
+
+	
+	
+	<!-- Start of scheme Action page -->
+	<div data-role="page" id="scheme-action">
+	
+		<div data-role="header">
+			<h1>Confirmation</h1>
+		</div><!-- /header -->
+	
+		<div data-role="content">
+			<div class="confirmation-content">
+				<!--h1 class="confirmation-title">Congratulation !</h1>
+				<div class="divider"></div>
+				<div class="confirmation-message">
+					<p>You have accepted the scheme offered by Mercury Power Scheme, dated 05/06/2013<br /><br />
+					   You will be getting a call from the OEM to complete the transaction. 
+					</p>
+				</div>
+				<div class="divider"></div>
+				<div class="more-scheme">
+					<a href="#schemelist" class="red-link" data-transition="slide">View More Schemes</a>
+				</div>
+				<div class="divider"></div-->
+					
+			</div>
+		</div><!-- /content -->
+		
+	
+	</div><!-- /page -->
+	</span><!-- fastclick -->
+  </body>
+</html>

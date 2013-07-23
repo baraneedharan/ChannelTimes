@@ -1,0 +1,374 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Page Title</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
+
+	<link rel="stylesheet" href="css/custom.css" />
+
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="scripts/jquery.mobile-1.3.1.js"></script>
+
+
+	<script type="text/javascript">
+
+	$(function(){
+	    // Bind the swipeleftHandler callback function to the swipe event on div.box
+	  $('body').on( 'swiperight', swiperightHandler );
+	  $('body').on( 'swipeleft', swipeleftHandler );
+	 
+	  // Callback function references the event target and adds the 'swipeleft' class to it
+	  function swiperightHandler(event){
+	    $(".left-panel-icon").trigger('click');
+	  }
+	 function swipeleftHandler(event){
+	    $(".right-panel-icon").trigger('click');
+	  }
+	});
+
+	$( document ).bind( "pageinit", function(){
+		$('.scheme-scrollable-content').scroll(function() {
+		  	var scrolled_pos = $(".scheme-scrollable-content").scrollTop();
+			if(scrolled_pos > 64) {
+				$(".scheme-detail-content .scheme-title").addClass("active");
+			}
+			else {
+				$(".scheme-detail-content .scheme-title").removeClass("active");
+			}
+		});
+
+
+		$('.profile-icon').live("click", function() {
+			$(this).addClass("active")
+		  	$(".profile-detail").slideDown();
+		  	$(".scheme-types, .articles-types").slideUp();
+		});
+
+		$('.profile-icon.active').live("click", function() {
+			$(this).removeClass("active")
+		  	$(".profile-detail").slideUp();
+		  	$(".scheme-types, .articles-types").slideDown();
+		});
+
+
+	});
+
+
+
+
+
+
+
+	</script>
+
+</head> 
+<body> 
+
+
+
+<!-- Start of Splash SCreen -->
+<div data-role="page" id="schemelist" class="schemelist-screen">
+	<div data-role="header">
+		<a href="#leftpanel" class="left-panel-icon">
+			<span class="img-span"></span>
+		</a>
+		<h1>All Schemes</h1>
+		<a href="#rightpanel" class="right-panel-icon">
+			<span class="img-span"></span>
+		</a>
+	</div><!-- /header -->
+
+
+	<!-- Left panel -->
+	<div data-role="panel" id="leftpanel"  data-position="left">
+
+		<div class="profile">
+			<span class="user-name">Maneesh Malhotra</span>
+			<div class="profile-icon-container">
+				<a href="#" class="profile-icon"></a>
+			</div>
+		</div>
+
+		<div class="profile-detail"> 
+			<ul>
+				<li class="has-list">
+					<ul class="profile-listing">
+						<li class="user-email">m.malhotra@gmail.com</li>
+						<li class="user-business">Sangeetha Mobiles</li>
+						<li class="user-location">Bangalore</li>
+						<li class="user-phone">123-456-789-01</li>
+						<li class="user-mobile">9845318431</li>
+					</ul>
+				</li>
+				<li class="notofication-li">
+					<input type="checkbox" name="pushnot-checkbox" id="push-not" value="on" checked="checked">
+        			<label for="push-not">Push Notification</label>
+				</li>
+				<li>
+        			<a href="#" class="logout">Logout <span class="logout-btn"></span></a>
+				</li>							
+			</ul>
+		</div>	
+
+		<div class="scheme-types">
+			<h1 class="panel-heading">SCHEMES</h1>
+			<ul>
+				<li>
+					<input type="radio" name="scheme-radio" id="scheme-1a" value="on" checked="checked">
+        			<label for="scheme-1a">All</label>
+				</li>
+				<li>
+					<input type="radio" name="scheme-radio" id="scheme-2a" value="on" checked="checked">
+        			<label for="scheme-2a">Open</label>
+				</li>
+				<li>
+					<input type="radio" name="scheme-radio" id="scheme-3a" value="on" checked="checked">
+        			<label for="scheme-3a">Accepted</label>
+				</li>	
+				<li>
+					<input type="radio" name="scheme-radio" id="scheme-4a" value="on" checked="checked">
+        			<label for="scheme-4a">Declined</label>
+				</li>
+				<li>
+					<input type="radio" name="scheme-radio" id="scheme-5a" value="on" checked="checked">
+        			<label for="scheme-5a">On Hold</label>
+				</li>								
+			</ul>
+		</div>
+
+		<div class="articles-types">
+			<h1 class="panel-heading">NEWS & ARTICLES</h1>
+			<ul>
+				<li>
+					<input type="radio" name="article-radio" id="article-1a" value="on" checked="checked">
+        			<label for="article-1a">Market Watch</label>
+				</li>
+				<li>
+					<input type="radio" name="article-radio" id="article-2a" value="on" checked="checked">
+        			<label for="article-2a">Interviews</label>
+				</li>
+				<li>
+					<input type="radio" name="article-radio" id="article-3a" value="on" checked="checked">
+        			<label for="article-3a">iTalk</label>
+				</li>	
+											
+			</ul>
+		</div>
+
+
+
+    </div><!-- Left panel -->
+
+
+
+
+<!-- Right panel -->
+	<div data-role="panel" id="rightpanel"  data-position="right">
+
+		
+		<div class="filter">
+			<h1 class="filter-title">Filter Scheme by </h1>
+		</div>		
+
+		<div class="filter-types">
+			<h1 class="panel-heading">Ending</h1>
+			<ul>
+				<li>
+					<input type="checkbox" name="filter-checkbox" id="filter-1a" value="on" checked="checked">
+        			<label for="filter-1a">None</label>
+				</li>
+				<li>
+					<input type="checkbox" name="filter-checkbox" id="filter-2a" value="on" checked="checked">
+        			<label for="filter-2a">Today</label>
+				</li>
+				<li>
+					<input type="checkbox" name="filter-checkbox" id="filter-3a" value="on" checked="checked">
+        			<label for="filter-3a">Tomorrow</label>
+				</li>	
+				<li>
+					<input type="checkbox" name="filter-checkbox" id="filter-4a" value="on" checked="checked">
+        			<label for="filter-4a">Next 7 days</label>
+				</li>							
+			</ul>
+		</div>
+
+		<div class="oem-types">
+			<h1 class="panel-heading">OEMs</h1>
+			<ul>
+				<li>
+					<input type="checkbox" name="oem-checkbox" id="oem-1a" value="on" checked="checked">
+        			<label for="oem-1a">All</label>
+				</li>
+				<li>
+					<input type="checkbox" name="oem-checkbox" id="oem-2a" value="on" checked="checked">
+        			<label for="oem-2a"><img src="css/images/oem-samsung.png" /></label>
+				</li>
+				<li>
+					<input type="checkbox" name="oem-checkbox" id="oem-3a" value="on" checked="checked">
+        			<label for="oem-3a"><img src="css/images/oem-lava.png" /></label>
+				</li>	
+				<li>
+					<input type="checkbox" name="oem-checkbox" id="oem-4a" value="on" checked="checked">
+        			<label for="oem-4a"><img src="css/images/oem-karbonn.png" /></label>
+				</li>	
+				<li>
+					<input type="checkbox" name="oem-checkbox" id="oem-5a" value="on" checked="checked">
+        			<label for="oem-5a"><img src="css/images/oem-lg.png" /></label>
+				</li>	
+				<li>
+					<input type="checkbox" name="oem-checkbox" id="oem-6a" value="on" checked="checked">
+        			<label for="oem-6a"><img src="css/images/oem-micromax.png" /></label>
+				</li>	
+				<li>
+					<input type="checkbox" name="oem-checkbox" id="oem-7a" value="on" checked="checked">
+        			<label for="oem-7a"><img src="css/images/oem-nokia.png" /></label>
+				</li>	
+				<li>
+					<input type="checkbox" name="oem-checkbox" id="oem-8a" value="on" checked="checked">
+        			<label for="oem-8a"><img src="css/images/oem-sony.png" /></label>
+				</li>																				
+			</ul>
+		</div>		
+
+    </div><!-- Right panel -->
+
+
+
+
+	<div data-role="content">	
+		<div class="schemelist-content">
+			<div class="search-bar">
+				<span class="search-icon"></span>
+				<input type="text" placeholder="Search Schemes"/>
+			</div>
+			<ul data-role="listview" class="scheme-list" data-inset="true">
+		 		<li><a href="#scheme-detail" data-transition="slide">
+		 			<span class="scheme-detail">
+		 				<h2 class="scheme-title">Mercury Power Scheme for Channel Partners</h2>
+		 				<p>Brand: Mercury</p><p>Products:MercuryElite650VAPROUPS </p>
+		 				<p>Scheme Available: AcrossIndia</p>
+		 			</span>
+		 			<span class="scheme-type">
+		 				<h4>Validity</h4>
+		 				<p><span class="start-date">24/05</span> - <span class="end-date">28/05</span></p>
+		 				<span class="scheme-status accept-status">Accepted</span>
+		 			</span>
+		 		</a></li>
+		 		<li><a href="#scheme-detail" data-transition="slide">
+		 			<span class="scheme-detail">
+		 				<h2 class="scheme-title">Mercury Power Scheme for Channel Partners</h2>
+		 				<p>Brand: Mercury</p><p>Products:MercuryElite650VAPROUPS </p>
+		 				<p>Scheme Available: AcrossIndia</p>
+		 			</span>
+		 			<span class="scheme-type">
+		 				<h4>Validity</h4>
+		 				<p><span class="start-date">24/05</span> - <span class="end-date">28/05</span></p>
+		 				<span class="scheme-status declined-status">Declined</span>
+		 			</span>
+		 		</a></li>
+		 		<li><a href="#scheme-detail" data-transition="slide">
+		 			<span class="scheme-detail">
+		 				<h2 class="scheme-title">Mercury Power Scheme for Channel Partners</h2>
+		 				<p>Brand: Mercury</p><p>Products:MercuryElite650VAPROUPS </p>
+		 				<p>Scheme Available: AcrossIndia</p>
+		 			</span>
+		 			<span class="scheme-type">
+		 				<h4>Validity</h4>
+		 				<p><span class="start-date">24/05</span> - <span class="end-date">28/05</span></p>
+		 				<span class="scheme-status hold-status">On Hold</span>
+		 			</span>
+		 		</a></li>
+		    </ul>
+
+
+
+		</div>
+
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+
+<!-- Start of scheme Details page -->
+<div data-role="page" id="scheme-detail">
+
+	<div data-role="header">
+		<a href="#schemelist" data-rel="back" class="back-btn">
+			<span class="img-span"></span>
+		</a>
+		<h1>Scheme Details</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<div class="scheme-detail-content">
+			<h6 class="scheme-title">Mercury Power Scheme for Channel Partners</h6>
+			<div class="scheme-scrollable-content">
+				<div class="scheme-brief-detail">
+					<p>Brand: <span class="scheme-brand">Mercury</span></p>
+					<p>Products:<span class="scheme-product">MercuryElite650VAPROUPS</span> </p>
+					<p>Scheme Available: <span class="scheme-location">AcrossIndia</span></p>
+				</div>
+				<div class="divider"></div>
+				<div class="clear"></div>
+				<div class="scheme-details">
+					<p>Rewards on earning points with the sale of Mercury Elite650 VA PRO UPS; from May to July 2013<br /><br />
+
+					May 24, 2013: Kobian, a leading player in computer peripherals and tablets, announced its special scheme - ‘Mercury Power’ for its partners. The scheme is exclusive on Mercury Elite650 PRO VA UPS and is designed for Pan India channel partners. The scheme is designed for partners to work on the Mercury UPS segment and earn attractive rewards.<br /><br />
+
+					The scheme is custom designed with varying slabs as per each region to meet the varying regional channel dynamics. Product and volume focus differs in each region and city classes. The schemes are valid from 1st May to 30th July 2013 and valid for the purchases billed out from Kobian authorized distributors. Targets for the quarter are varied allowing smaller B and C city partners also to avail the scheme and maximize their business and earn attractive rewards.</p>
+				</div>
+
+				<h5 class="scheme-validity">
+					Validity: <span class="scheme-validity-startdate">24/05</span> - <span class="scheme-validity-startdate">23/06</span>
+				</h5>
+				<div class="divider"></div>
+				<div class="more-scheme">
+					<a href="#" class="red-link">More Schemes from Mercury</a>
+				</div>
+				<div class="divider mbot45"></div>
+			</div>
+		</div>
+		<div class="scheme-action-btns">
+			<a href="#scheme-action" class="scheme-btn"><span class="accept"></span>Accept</a>
+			<a href="#scheme-action" class="scheme-btn"><span class="hold"></span>Hold</a>
+			<a href="#scheme-action" class="scheme-btn"><span class="decline"></span>Decline</a>
+		</div>
+	</div><!-- /content -->
+	
+
+</div><!-- /page -->
+
+
+<!-- Start of scheme Action page -->
+<div data-role="page" id="scheme-action">
+
+	<div data-role="header">
+		<h1>Confirmation</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<div class="confirmation-content">
+			<h1 class="confirmation-title">Congratulation !</h1>
+			<div class="divider"></div>
+			<div class="confirmation-message">
+				<p>You have accepted the scheme offered by Mercury Power Scheme, dated 05/06/2013<br /><br />
+				   You will be getting a call from the OEM to complete the transaction. 
+				</p>
+			</div>
+			<div class="divider"></div>
+			<div class="more-scheme">
+				<a href="#schemelist" class="red-link" data-transition="slide">View More Schemes</a>
+			</div>
+			<div class="divider"></div>
+				
+		</div>
+	</div><!-- /content -->
+	
+
+</div><!-- /page -->
+
+
+</body>
+</html>
